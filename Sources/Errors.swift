@@ -14,6 +14,4 @@ extension Errors: LocalizedError {
                 return String(localized: "\(model) must have a property named “\(property)”")
         }
     }
-    
-    
 }

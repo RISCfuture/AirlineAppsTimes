@@ -1,20 +1,20 @@
-fileprivate let typeCodeField = "Type Code"
-fileprivate let simTypeField = "Sim Type"
-fileprivate let simCategoryField = "Sim A/C Cat"
-fileprivate let dieselField = "Diesel Engine"
+private let typeCodeField = "Type Code"
+private let simTypeField = "Sim Type"
+private let simCategoryField = "Sim A/C Cat"
+private let dieselField = "Diesel Engine"
 
 extension Reader {
-    func fetchAircraft() throws -> Array<Aircraft> {
+    func fetchAircraft() throws -> [Aircraft] {
         let request = CNAircraft.fetchRequest()
         let aircraft = try container.viewContext.fetch(request)
-        
+
         let typeCodeProperty = try aircraftTypeCustomAttribute(for: typeCodeField)
-        
+
         return aircraft.map { aircraft in
                 .init(aircraft: aircraft, typeCodeProperty: typeCodeProperty)
         }
     }
-    
+
     private func aircraftTypeCustomAttribute(for title: String) throws -> KeyPath<CNAircraftType, String?> {
         let request = CNLogTenCustomizationProperty.fetchRequest(title: title, keyPrefix: "aircraftType_customAttribute")
         let result = try container.viewContext.fetch(request)

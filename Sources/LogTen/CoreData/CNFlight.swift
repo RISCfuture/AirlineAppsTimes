@@ -7,6 +7,7 @@ final class CNFlight: NSManagedObject {
     // MARK: Managed Properties
 
     @NSManaged var flight_aircraft: CNAircraft?
+    @NSManaged var flight_flightDate: Date?
 
     @NSManaged var flight_totalTime: NSNumber?
     @NSManaged var flight_pic: NSNumber?

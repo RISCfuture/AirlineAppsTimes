@@ -9,6 +9,9 @@ final class CNAircraftType: NSManagedObject {
     @NSManaged var aircraftType_type: String
     @NSManaged var aircraftType_make: String
     @NSManaged var aircraftType_model: String
+    @NSManaged var aircraftType_category: CNLogTenCustomizationProperty?
+    @NSManaged var aircraftType_aircraftClass: CNLogTenCustomizationProperty?
+    @NSManaged var aircraftType_engineType: CNLogTenCustomizationProperty?
 
     @NSManaged var aircraftType_customAttribute1: String?
     @NSManaged var aircraftType_customAttribute2: String?

@@ -5,6 +5,7 @@ struct Flight: Record {
     // MARK: Properties
 
     let aircraft: Aircraft?
+    let flightDate: Date?
 
     let totalTime: UInt // minutes
     let PICTime: UInt // minutes
@@ -25,6 +26,7 @@ struct Flight: Record {
     init(flight: CNFlight,
          aircraft: Aircraft) {
         self.aircraft = aircraft
+        self.flightDate = flight.flight_flightDate
 
         totalTime = flight.flight_totalTime?.uintValue ?? 0
         SICTime = flight.flight_sic?.uintValue ?? 0

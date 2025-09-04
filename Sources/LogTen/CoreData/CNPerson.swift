@@ -16,7 +16,7 @@ final class CNPerson: NSManagedObject {
     static func fetchRequest() -> NSFetchRequest<CNPerson> {
         let request = NSFetchRequest<CNPerson>(entityName: "Person")
         request.sortDescriptors = [
-            .init(keyPath: \CNPerson.person_name, ascending: true)
+            .init(keyPath: \Self.person_name, ascending: true)
         ]
         return request
     }

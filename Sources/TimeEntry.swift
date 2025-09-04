@@ -1,42 +1,40 @@
 import Foundation
 
 class TimeEntry: Identifiable, Hashable, Comparable {
-    private static var timeFormatter: NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 1
-        formatter.minimumFractionDigits = 1
-        formatter.usesGroupingSeparator = false
-        return formatter
-    }
-
-    private static let defaultFormatted = String(localized: "0.0")
-
-    private var formattedPIC: String { Self.timeFormatter.string(from: .init(floatLiteral: PIC)) ?? Self.defaultFormatted }
-    private var formattedSIC: String { Self.timeFormatter.string(from: .init(floatLiteral: SIC)) ?? Self.defaultFormatted }
-    private var formattedDualGiven: String { Self.timeFormatter.string(from: .init(floatLiteral: dualGiven)) ?? Self.defaultFormatted }
-    private var formattedDualReceived: String { Self.timeFormatter.string(from: .init(floatLiteral: dualReceived)) ?? Self.defaultFormatted }
-    private var formattedTotal: String { Self.timeFormatter.string(from: .init(floatLiteral: total)) ?? Self.defaultFormatted }
+    private var flights: [Flight] = []
 
     let type: String
-    var PIC: Double
-    var SIC: Double
-    var dualGiven: Double
-    var dualReceived: Double
-    var total: Double
+    var PIC: Double = 0
+    var SIC: Double = 0
+    var dualGiven: Double = 0
+    var dualReceived: Double = 0
+    var total: Double = 0
+
+    var dateLastFlown: Date? {
+        flights.compactMap(\.flightDate).max()
+    }
+
+    var totalLast36Months: Double {
+        let cutoffDate = Calendar.current.date(byAdding: .month, value: -36, to: Date()) ?? Date()
+        return flights
+            .filter { flight in
+                guard let flightDate = flight.flightDate else { return false }
+                return flightDate >= cutoffDate
+            }
+            .reduce(0) { $0 + $1.totalHours }
+    }
+
+    var picPlusSicLast36Months: Double {
+        let cutoffDate = Calendar.current.date(byAdding: .month, value: -36, to: Date()) ?? Date()
+        return flights
+            .filter { flight in
+                guard let flightDate = flight.flightDate else { return false }
+                return flightDate >= cutoffDate
+            }
+            .reduce(0) { $0 + $1.PICHours + $1.SICHours }
+    }
 
     var id: String { type }
-
-    var output: String {
-        String(localized: """
-               \(type)
-                 PIC: \(formattedPIC)
-                 D/G: \(formattedDualGiven)
-                 SIC: \(formattedSIC)
-                 D/R: \(formattedDualReceived)
-                 TT:  \(formattedTotal)
-               """)
-    }
 
     init(flight: Flight) {
         guard let typeCode = flight.aircraft?.type.typeCode else {
@@ -44,6 +42,7 @@ class TimeEntry: Identifiable, Hashable, Comparable {
         }
 
         type = typeCode
+        flights = [flight]
         total = flight.totalHours
         PIC = flight.PICHours
         SIC = flight.SICHours
@@ -62,6 +61,7 @@ class TimeEntry: Identifiable, Hashable, Comparable {
     func addFlight(_ flight: Flight) {
         precondition(flight.aircraft?.type.typeCode == type)
 
+        flights.append(flight)
         total += flight.totalHours
         PIC += flight.PICHours
         SIC += flight.SICHours

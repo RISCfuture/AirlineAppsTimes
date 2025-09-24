@@ -3,16 +3,18 @@ import Foundation
 /// Represents a LogTen Pro logbook.
 public actor Logbook {
 
-    // MARK: Data
+  // MARK: Data
 
-    let aircraft: [Aircraft]
-    let flights: [Flight]
+  let aircraft: [Aircraft]
+  let flights: [Flight]
 
-    // MARK: Initializers
+  // MARK: Initializers
 
-    init(aircraft: [Aircraft],
-         flights: [Flight]) {
-        self.aircraft = Array(aircraft)
-        self.flights = Array(flights)
-    }
+  init(
+    aircraft: [Aircraft],
+    flights: [Flight]
+  ) {
+    self.aircraft = Array(aircraft)
+    self.flights = Array(flights)
+  }
 }

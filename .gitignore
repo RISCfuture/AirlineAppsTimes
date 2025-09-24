@@ -64,3 +64,5 @@ fastlane/test_output
 
 # SwiftLint Remote Config Cache
 .swiftlint/RemoteConfigCache
+# Swift Format config (symlinked)
+.swift-format

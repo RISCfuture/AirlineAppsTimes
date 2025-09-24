@@ -4,22 +4,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "airline-apps-times",
-    defaultLocalization: "en",
-    platforms: [.macOS(.v13)],
-    dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.2.0")
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .executableTarget(
-            name: "airline-apps-times",
-            dependencies: [
-                .product(name: "ArgumentParser", package: "swift-argument-parser")
-            ],
-            resources: [.process("Resources/Localizable.xcstrings")]
-        )
-    ],
-    swiftLanguageModes: [.v6]
+  name: "airline-apps-times",
+  defaultLocalization: "en",
+  platforms: [.macOS(.v14)],
+  dependencies: [
+    .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.2.0")
+  ],
+  targets: [
+    // Targets are the basic building blocks of a package, defining a module or a test suite.
+    // Targets can depend on other targets in this package and products from dependencies.
+    .executableTarget(
+      name: "airline-apps-times",
+      dependencies: [
+        .product(name: "ArgumentParser", package: "swift-argument-parser")
+      ],
+      resources: [.process("Resources/Localizable.xcstrings")]
+    )
+  ],
+  swiftLanguageModes: [.v6]
 )

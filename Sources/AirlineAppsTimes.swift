@@ -1,6 +1,21 @@
 import ArgumentParser
 import CoreData
 
+/// The main command for extracting flight times from LogTen Pro.
+///
+/// This command reads your LogTen Pro flight logbook database and formats
+/// flight times for entry into airline application forms.
+///
+/// ## Usage
+///
+/// ```bash
+/// airline-apps-times [--format <format>] [--logten-file <path>] [--logten-managed-object-model <path>]
+/// ```
+///
+/// ## See Also
+///
+/// - <doc:GettingStarted>
+/// - <doc:CommandLineReference>
 @main
 struct AirlineAppsTimes: AsyncParsableCommand {
   static let configuration = CommandConfiguration(
@@ -72,8 +87,25 @@ struct AirlineAppsTimes: AsyncParsableCommand {
     return entries.values.sorted().reversed()
   }
 
+  /// The available output formats for flight time data.
+  ///
+  /// Each format is tailored to a specific airline application system
+  /// and may include different fields or filter aircraft differently.
+  ///
+  /// ## See Also
+  ///
+  /// - <doc:OutputFormats>
   enum OutputFormat: String, CaseIterable, ExpressibleByArgument {
+    /// Format for AirlineApps.com applications.
+    ///
+    /// Includes PIC, SIC, dual given, dual received, and total time
+    /// for all aircraft types.
     case airlineapps
+
+    /// Format for Southwest Airlines applications.
+    ///
+    /// Includes date last flown, PIC, SIC, total, and 36-month totals.
+    /// Only includes turbine-powered airplanes.
     case southwest
 
     var formatter: Formatter {

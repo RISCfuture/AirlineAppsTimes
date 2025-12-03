@@ -1,5 +1,30 @@
 import Foundation
 
+/// Formats flight times for Southwest Airlines applications.
+///
+/// This formatter filters to turbine-powered airplanes only and outputs:
+/// - **Date last flown**: Most recent flight in this aircraft type
+/// - **PIC time**: Pilot in Command time
+/// - **SIC time**: Second in Command time
+/// - **Total time**: PIC + SIC (excludes dual given/received)
+/// - **Total time last 36 months**: Rolling 36-month PIC + SIC total
+///
+/// ## Aircraft Filtering
+///
+/// Only includes aircraft meeting both criteria:
+/// - Category: Airplane
+/// - Engine type: Turbine, turbo-prop, turbo-fan, turbojet, or jet
+///
+/// ## Example Output
+///
+/// ```
+/// B737
+///   Date last flown: 12/1/24
+///   PIC time: 1250.0
+///   SIC time: 500.0
+///   Total time: 1750.0
+///   Total time last 36 months: 850.0
+/// ```
 struct SouthwestFormatter: Formatter {
   private static var timeFormatter: NumberFormatter {
     let formatter = NumberFormatter()

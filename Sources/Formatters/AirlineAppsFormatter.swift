@@ -1,5 +1,26 @@
 import Foundation
 
+/// Formats flight times for AirlineApps.com applications.
+///
+/// This formatter outputs all aircraft types with the following fields:
+/// - **PIC**: Pilot in Command time
+/// - **D/G**: Dual Given (instruction provided)
+/// - **SIC**: Second in Command time
+/// - **D/R**: Dual Received (instruction received)
+/// - **TT**: Total Time
+///
+/// All times are displayed with one decimal place.
+///
+/// ## Example Output
+///
+/// ```
+/// B737
+///   PIC: 1250.0
+///   D/G: 125.0
+///   SIC: 500.0
+///   D/R: 0.0
+///   TT:  1875.0
+/// ```
 struct AirlineAppsFormatter: Formatter {
   private static var timeFormatter: NumberFormatter {
     let formatter = NumberFormatter()

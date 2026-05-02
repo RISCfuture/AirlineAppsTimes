@@ -1,5 +1,9 @@
 # AirlineAppsTimes
 
+[![CI](https://github.com/RISCfuture/AirlineAppsTimes/actions/workflows/swift.yaml/badge.svg)](https://github.com/RISCfuture/AirlineAppsTimes/actions/workflows/swift.yaml)
+[![Documentation](https://github.com/RISCfuture/AirlineAppsTimes/actions/workflows/documentation.yaml/badge.svg)](https://riscfuture.github.io/AirlineAppsTimes/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Extract flight times from LogTen Pro for airline applications.
 
 This tool reads your LogTen Pro logbook database and formats flight times

@@ -1,13 +1,6 @@
 import CoreData
 import Foundation
 
-private let nightFullStopField = "Night Full Stops"
-private let proficiencyField = "FAR 61.58"
-private let checkrideField = "Checkride"
-
-private let safetyPilotField = "Safety Pilot"
-private let examinerField = "Examiner"
-
 extension Reader {
   func fetchFlights(aircraft: [Aircraft]) throws -> [Flight] {
     let request = CNFlight.fetchRequest()

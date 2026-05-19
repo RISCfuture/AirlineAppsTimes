@@ -13,5 +13,3 @@ extension IdentifiableRecord {
     hasher.combine(id)
   }
 }
-
-protocol RecordEnum: RawRepresentable, Codable, Sendable {}

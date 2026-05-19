@@ -44,21 +44,6 @@ class TimeEntry: Identifiable, Hashable, Comparable {
     flights.compactMap(\.flightDate).max()
   }
 
-  /// Total flight time in the last 36 months.
-  ///
-  /// Calculates the sum of all flight time (total hours) for flights
-  /// within the last 36 months from the current date.
-  var totalLast36Months: Double {
-    let cutoffDate = Calendar.current.date(byAdding: .month, value: -36, to: Date()) ?? Date()
-    return
-      flights
-      .filter { flight in
-        guard let flightDate = flight.flightDate else { return false }
-        return flightDate >= cutoffDate
-      }
-      .reduce(0) { $0 + $1.totalHours }
-  }
-
   /// Combined PIC and SIC time in the last 36 months.
   ///
   /// Used by Southwest format to show recent turbine time.

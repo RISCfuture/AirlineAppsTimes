@@ -1,9 +1,4 @@
 private let typeCodeField = "Type Code"
-private let simTypeField = "Sim Type"
-private let simCategoryField = "Sim A/C Cat"
-private let dieselField = "Diesel Engine"
-private let aircraftClassField = "A/C Class"
-private let engineTypeField = "Engine Type"
 
 extension Reader {
   func fetchAircraft() throws -> [Aircraft] {

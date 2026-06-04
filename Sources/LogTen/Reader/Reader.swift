@@ -55,6 +55,6 @@ actor Reader {
     let aircraft = try fetchAircraft()
     let flights = try fetchFlights(aircraft: aircraft)
 
-    return .init(aircraft: aircraft, flights: flights)
+    return .init(flights: flights)
   }
 }

@@ -46,7 +46,7 @@ This reads your LogTen Pro database from its default location and outputs flight
 
 ### Example Output
 
-```
+```text
 C172
 PIC: 150.3  D/G: 0.0  SIC: 0.0  D/R: 45.2  TT: 195.5
 

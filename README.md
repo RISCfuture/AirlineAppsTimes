@@ -26,7 +26,7 @@ a release binary that can be installed in the location of your choice.
 
 ## Usage
 
-```
+```text
 OVERVIEW: Extract flight times from LogTen Pro for airline applications.
 
 This tool reads your LogTen Pro logbook database and formats flight times

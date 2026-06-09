@@ -22,7 +22,7 @@ The default format, designed for the AirlineApps.com online application system.
 
 ### Example Output
 
-```
+```text
 C172
   PIC: 150.3
   D/G: 0.0
@@ -58,7 +58,7 @@ Specialized format for Southwest Airlines pilot applications.
 
 ### Example Output
 
-```
+```text
 B737
   Date last flown: 12/1/24
   PIC time: 1250.0
@@ -106,11 +106,13 @@ In AirlineApps format, this is all flight time (PIC + SIC + Dual Given + Dual Re
 ## Choosing a Format
 
 Use `--format airlineapps` (default) when:
+
 - Applying through the AirlineApps.com system
 - You need to see all aircraft types
 - You need dual given/received breakdowns
 
 Use `--format southwest` when:
+
 - Applying to Southwest Airlines
 - You only need turbine airplane time
 - You need the 36-month rolling totals

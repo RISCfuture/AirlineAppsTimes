@@ -8,7 +8,7 @@ AirlineAppsTimes accepts several options to customize its behavior. All options 
 
 ## Usage
 
-```
+```bash
 airline-apps-times [--format <format>] [--logten-file <path>] [--logten-managed-object-model <path>]
 ```
 
@@ -19,10 +19,12 @@ airline-apps-times [--format <format>] [--logten-file <path>] [--logten-managed-
 Specifies the output format for flight times.
 
 **Values:**
+
 - `airlineapps` (default) - Format for AirlineApps.com applications
 - `southwest` - Format for Southwest Airlines applications
 
 **Example:**
+
 ```bash
 airline-apps-times --format southwest
 ```
@@ -38,6 +40,7 @@ Path to the LogTen Pro database file.
 Use this option if your LogTen Pro database is in a non-standard location or if you want to process a backup.
 
 **Example:**
+
 ```bash
 airline-apps-times --logten-file /path/to/LogTenCoreDataStore.sql
 ```
@@ -51,6 +54,7 @@ Path to the LogTen Pro Core Data model file.
 Use this option if LogTen Pro is installed in a non-standard location.
 
 **Example:**
+
 ```bash
 airline-apps-times --logten-managed-object-model /path/to/CNLogBookDocument.momd
 ```

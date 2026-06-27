@@ -3,6 +3,11 @@
 
 import PackageDescription
 
+let approachableConcurrency: [SwiftSetting] = [
+  .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+  .enableUpcomingFeature("InferIsolatedConformances")
+]
+
 let package = Package(
   name: "airline-apps-times",
   defaultLocalization: "en",
@@ -19,7 +24,8 @@ let package = Package(
       dependencies: [
         .product(name: "ArgumentParser", package: "swift-argument-parser")
       ],
-      resources: [.process("Resources/Localizable.xcstrings")]
+      resources: [.process("Resources/Localizable.xcstrings")],
+      swiftSettings: approachableConcurrency
     )
   ],
   swiftLanguageModes: [.v6]

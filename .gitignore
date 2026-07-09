@@ -14,3 +14,4 @@ docs/
 # SwiftLint / swift-format
 .swiftlint/RemoteConfigCache
 .swift-format
+.claude/settings.local.json

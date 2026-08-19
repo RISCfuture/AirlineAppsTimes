@@ -18,5 +18,4 @@
 ### Rolling Calculations
 
 - ``dateLastFlown``
-- ``totalLast36Months``
 - ``picPlusSicLast36Months``

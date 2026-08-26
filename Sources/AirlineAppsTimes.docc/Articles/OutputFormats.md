@@ -40,7 +40,9 @@ B737
 
 ### Aircraft Filtering
 
-The AirlineApps format includes **all aircraft types** in your logbook, regardless of category or engine type.
+The AirlineApps format includes **every real aircraft type** in your logbook, regardless of category or engine type.
+
+Simulators, FTDs, and BATDs are excluded. Simulator sessions are logged against a dedicated simulator aircraft type and record no flight time, so listing them beside real aircraft would overstate flight time on an application. Report simulator time in whichever separate field the application provides for it.
 
 ## Southwest Format
 
@@ -108,7 +110,7 @@ In AirlineApps format, this is all flight time (PIC + SIC + Dual Given + Dual Re
 Use `--format airlineapps` (default) when:
 
 - Applying through the AirlineApps.com system
-- You need to see all aircraft types
+- You need to see every aircraft type you have flown
 - You need dual given/received breakdowns
 
 Use `--format southwest` when:

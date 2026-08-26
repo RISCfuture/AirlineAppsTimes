@@ -131,7 +131,7 @@ struct AirlineAppsTimes: AsyncParsableCommand {
     /// Format for AirlineApps.com applications.
     ///
     /// Includes PIC, SIC, dual given, dual received, and total time
-    /// for all aircraft types.
+    /// for every real aircraft type. Simulators are excluded.
     case airlineapps
 
     /// Format for Southwest Airlines applications.

@@ -2,7 +2,7 @@ import Foundation
 
 /// Formats flight times for AirlineApps.com applications.
 ///
-/// This formatter outputs all aircraft types with the following fields:
+/// This formatter outputs every real aircraft type with the following fields:
 /// - **PIC**: Pilot in Command time
 /// - **D/G**: Dual Given (instruction provided)
 /// - **SIC**: Second in Command time
@@ -10,6 +10,12 @@ import Foundation
 /// - **TT**: Total Time
 ///
 /// All times are displayed with one decimal place.
+///
+/// ## Aircraft Filtering
+///
+/// Simulators, FTDs, and BATDs are excluded. Their sessions are logged against
+/// a dedicated simulator aircraft type and record no flight time, so reporting
+/// them alongside real aircraft would overstate flight time on an application.
 ///
 /// ## Example Output
 ///
@@ -22,6 +28,8 @@ import Foundation
 ///   TT:  1875.0
 /// ```
 struct AirlineAppsFormatter: Formatter {
+  private static let simulatorCategory = "simulator"
+
   private static var timeFormatter: NumberFormatter {
     let formatter = NumberFormatter()
     formatter.numberStyle = .decimal
@@ -58,7 +66,7 @@ struct AirlineAppsFormatter: Formatter {
     )
   }
 
-  func shouldIncludeAircraft(_: AircraftType) -> Bool {
-    true
+  func shouldIncludeAircraft(_ aircraft: AircraftType) -> Bool {
+    aircraft.aircraftCategory?.lowercased() != Self.simulatorCategory
   }
 }

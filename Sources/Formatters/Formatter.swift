@@ -23,8 +23,8 @@ protocol Formatter {
 
   /// Determines whether an aircraft type should be included in output.
   ///
-  /// Some formats filter aircraft types. For example, Southwest format
-  /// only includes turbine-powered airplanes.
+  /// Formats filter aircraft types. The AirlineApps format excludes
+  /// simulators; the Southwest format includes only turbine-powered airplanes.
   ///
   /// - Parameter aircraft: The aircraft type to check.
   /// - Returns: `true` if this aircraft type should be included in output.

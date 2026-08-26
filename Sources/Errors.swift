@@ -16,6 +16,15 @@ enum Errors: Error {
   /// - Parameter path: The path that failed to load.
   case couldntCreateStore(path: URL)
 
+  /// No LogTen Pro logbook database could be found.
+  ///
+  /// LogTen Pro stores its logbook in a directory whose name ends with an
+  /// installation-specific identifier. This error occurs when no such directory
+  /// containing a logbook database exists.
+  ///
+  /// - Parameter directory: The LogTen Pro group container that was searched.
+  case couldntFindDataStore(directory: URL)
+
   /// A required property is missing from a Core Data model.
   ///
   /// This can occur if the LogTen Pro database schema has changed
@@ -32,6 +41,9 @@ extension Errors: LocalizedError {
     switch self {
       case .couldntCreateStore(let path):
         return String(localized: "Couldn’t create Core Data store for “\(path.lastPathComponent)”")
+      case .couldntFindDataStore(let directory):
+        let path = directory.path(percentEncoded: false)
+        return String(localized: "Couldn’t find a LogTen Pro logbook in “\(path)”")
       case let .missingProperty(property, model):
         return String(localized: "\(model) must have a property named “\(property)”")
     }

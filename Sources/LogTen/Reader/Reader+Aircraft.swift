@@ -1,3 +1,5 @@
+import CoreData
+
 private let typeCodeField = "Type Code"
 
 extension Reader {

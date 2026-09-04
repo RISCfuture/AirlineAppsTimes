@@ -101,7 +101,7 @@ struct AirlineAppsTimes: AsyncParsableCommand {
     }
   }
 
-  private func generateTimes(logbook: Logbook, formatter: Formatter) -> [TimeEntry] {
+  private func generateTimes(logbook: Logbook, formatter: any Formatter) -> [TimeEntry] {
     let entries = logbook.flights
       .filter { flight in
         guard let aircraftType = flight.aircraft?.type else { return false }
@@ -140,7 +140,7 @@ struct AirlineAppsTimes: AsyncParsableCommand {
     /// Only includes turbine-powered airplanes.
     case southwest
 
-    var formatter: Formatter {
+    var formatter: any Formatter {
       switch self {
         case .airlineapps:
           return AirlineAppsFormatter()

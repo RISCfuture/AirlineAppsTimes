@@ -3,13 +3,14 @@
 
 import PackageDescription
 
-let upcomingFeatures: [SwiftSetting] = [
+let swiftSettings: [SwiftSetting] = [
   .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
   .enableUpcomingFeature("InferIsolatedConformances"),
   .enableUpcomingFeature("ImmutableWeakCaptures"),
   .enableUpcomingFeature("MemberImportVisibility"),
   .enableUpcomingFeature("ExistentialAny"),
-  .enableUpcomingFeature("InternalImportsByDefault")
+  .enableUpcomingFeature("InternalImportsByDefault"),
+  .strictMemorySafety()
 ]
 
 let package = Package(
@@ -29,7 +30,7 @@ let package = Package(
         .product(name: "ArgumentParser", package: "swift-argument-parser")
       ],
       resources: [.process("Resources/Localizable.xcstrings")],
-      swiftSettings: upcomingFeatures
+      swiftSettings: swiftSettings
     )
   ],
   swiftLanguageModes: [.v6]
